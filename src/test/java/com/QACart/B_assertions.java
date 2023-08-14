@@ -135,50 +135,76 @@ public class B_assertions {
     }
 
     @Test
-    public void empty() {
+    public void emptyassertion() {
         RestAssured
-                .given().baseUri("")
-                .when().get("")
-                .then().equals("");
+                .given().baseUri("https://60c391c82df2cb00178ab775.mockapi.io")
+                .when().get("/api/v1/Students")
+                .then().assertThat().body("[1].FirstName",empty());
     }
 
     @Test
-    public void hassize() {
+    public void notemptyassertion() {
         RestAssured
-                .given().baseUri("")
-                .when().get("")
-                .then().equals("");
+                .given().baseUri("https://60c391c82df2cb00178ab775.mockapi.io")
+                .when().get("/api/v1/Students")
+                .then().assertThat().body("[1].FirstName",not(empty()));
     }
 
     @Test
-    public void everyitemstartwith() {
+    public void hassizeassertion() {
         RestAssured
-                .given().baseUri("")
-                .when().get("")
-                .then().equals("");
+                .given().baseUri("https://60c391c82df2cb00178ab775.mockapi.io")
+                .when().get("/api/v1/Students")
+                .then().assertThat().body("LastNAme",hasSize(4));
     }
 
     @Test
-    public void haskey() {
+    public void secoandhassizeassertion() {
         RestAssured
-                .given().baseUri("")
-                .when().get("")
-                .then().equals("");
+                .given().baseUri("https://60c391c82df2cb00178ab775.mockapi.io")
+                .when().get("/api/v1/Students")
+                .then().assertThat().body("FirstName.size",equalTo(4));
     }
 
     @Test
-    public void hasvalue() {
+    public void everyitemstartwithassertion() {
         RestAssured
-                .given().baseUri("")
-                .when().get("")
-                .then().equals("");
+                .given().baseUri("https://60c391c82df2cb00178ab775.mockapi.io")
+                .when().get("/api/v1/Students")
+                .then().assertThat().body("createdAt",everyItem(startsWith("2023")));
     }
 
+    // HasKey,HasValue and HasEntry to make sure map contains specific item
+    // HasKey to make sure that map contains a specific map
+    // assertThat().body("[Groovy Path]",hasKey(key));
+
     @Test
-    public void hasi() {
+    public void haskeyasertion() {
         RestAssured
-                .given().baseUri("")
-                .when().get("")
-                .then().equals("");
+                .given().baseUri("https://60c391c82df2cb00178ab775.mockapi.io")
+                .when().get("/api/v1/Students")
+                .then().assertThat().body("[0]",hasKey("FirstName"));
+    }
+
+    // HasKey to make sure that map contains a specific map
+    // assertThat().body("[Groovy Path]",hasKey(key));
+
+    @Test
+    public void hasvalueassertion() {
+        RestAssured
+                .given().baseUri("https://60c391c82df2cb00178ab775.mockapi.io")
+                .when().get("/api/v1/Students")
+                .then().assertThat().body("[3].",hasValue("Egypt"));
+    }
+
+    // HasEntry to make sure that map contains a specific value for specific key
+    // assertThat().body("[Groovy Path]",hasEntry("Key","Value"));
+
+    @Test
+    public void hasentryassertion() {
+        RestAssured
+                .given().baseUri("https://60c391c82df2cb00178ab775.mockapi.io")
+                .when().get("/api/v1/Students")
+                .then().assertThat().body("[1]",hasEntry("LastNAme","Kuhlman"));
     }
 }
