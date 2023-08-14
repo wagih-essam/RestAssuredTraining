@@ -81,7 +81,15 @@ public class B_assertions {
         RestAssured
                 .given().baseUri("https://60c391c82df2cb00178ab775.mockapi.io")
                 .when().get("/api/v1/Students")
-                .then().assertThat().body("Country",hasItems("Egypt","Turkey","Mexico"));
+                .then().assertThat().body("Country",hasItems("Egypt","Mexico"));
+    }
+
+    @Test
+    public void negativehasitems() {
+        RestAssured
+                .given().baseUri("https://60c391c82df2cb00178ab775.mockapi.io")
+                .when().get("/api/v1/Students")
+                .then().assertThat().body("Country",hasItems("Egypt","Saudia"));
     }
 
     // Not : use it to check if item is Not in collection
