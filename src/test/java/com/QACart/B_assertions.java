@@ -74,6 +74,7 @@ public class B_assertions {
     }
 
     // HasItems : to assert if an array contains a specific items
+    // Arrangement isn't important
 
     @Test
     public void hasitems() {
@@ -93,12 +94,44 @@ public class B_assertions {
                 .then().assertThat().body("[0].FirstName", not(hasItem("wageh")));
     }
 
+    // Contain assert against all , so you must include all data " egypt , mexico" not just one or two
+    // its like hasitems but this is the difference
+    // Arrangement is very important
+
     @Test
     public void containsassertoin() {
         RestAssured
-                .given().baseUri("")
-                .when().get("")
-                .then().equals("");
+                .given().baseUri("https://60c391c82df2cb00178ab775.mockapi.io")
+                .when().get("/api/v1/Students")
+                .then().assertThat().body("Country",contains("Saint Vincent and the Grenadines","Mexico","Eritrea","Egypt"));
+    }
+
+    @Test
+    public void firstnegativecontainsassertoin() {
+        RestAssured
+                .given().baseUri("https://60c391c82df2cb00178ab775.mockapi.io")
+                .when().get("/api/v1/Students")
+                .then().assertThat().body("Country",contains("Saint Vincent and the Grenadines","Mexico"));
+    }
+
+    // Arrangement in contains is important
+
+    @Test
+    public void secoandnegativecontainsassertoin() {
+        RestAssured
+                .given().baseUri("https://60c391c82df2cb00178ab775.mockapi.io")
+                .when().get("/api/v1/Students")
+                .then().assertThat().body("Country",contains("Saint Vincent and the Grenadines","Mexico","Egypt","Eritrea"));
+    }
+
+    // To avoid Arrangement while using contains , we can use contains in any order
+
+    @Test
+    public void containsinanyorderassertoin() {
+        RestAssured
+                .given().baseUri("https://60c391c82df2cb00178ab775.mockapi.io")
+                .when().get("/api/v1/Students")
+                .then().assertThat().body("Country",containsInAnyOrder("Saint Vincent and the Grenadines","Egypt","Mexico","Eritrea"));
     }
 
     @Test
