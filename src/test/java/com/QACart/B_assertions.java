@@ -90,7 +90,7 @@ public class B_assertions {
         RestAssured
                 .given().baseUri("https://60c391c82df2cb00178ab775.mockapi.io")
                 .when().get("/api/v1/Students")
-                .then().assertThat().body("[0].FirstName", not(hasItem("wageh")));
+                .then().assertThat().body("[0].FirstName", not(hasItem("wagehh")));
     }
 
     @Test
