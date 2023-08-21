@@ -1,4 +1,4 @@
-package com.QACart;
+package com.QACart.Training;
 
 import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
