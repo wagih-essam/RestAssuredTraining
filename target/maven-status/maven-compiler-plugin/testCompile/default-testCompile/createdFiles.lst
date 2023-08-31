@@ -1,0 +1,9 @@
+com\QACart\Academy\Tests\InfoTest.class
+com\QACart\Training\E_headers.class
+com\QACart\Training\B_assertions.class
+com\QACart\Training\F_parameters.class
+com\QACart\Training\C_extract.class
+com\QACart\Training\H_authorization.class
+com\QACart\Training\G_body.class
+com\QACart\Training\A_testcase.class
+com\QACart\Training\D_logging.class
