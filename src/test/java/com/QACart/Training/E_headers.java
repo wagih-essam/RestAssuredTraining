@@ -52,4 +52,14 @@ public class E_headers {
                 .when().get("/api/v1/Students")
                 .then().log().all().assertThat().statusCode(200);
     }
+
+    @Test
+    public void getheadersThird(){
+        given()
+                .baseUri("https://60c391c82df2cb00178ab775.mockapi.io")
+                .headers("Country","Mexico","LastNAme","Kuhlman")
+                .log().all()
+                .when().get("/api/v1/Students")
+                .then().log().all().assertThat().statusCode(200);
+    }
 }
