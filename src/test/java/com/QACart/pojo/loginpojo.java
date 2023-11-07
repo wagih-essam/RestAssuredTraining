@@ -27,12 +27,12 @@ public class loginpojo {
 
 /*
 added to use contractor
+
+ */
     public loginpojo(String email,String password){
         this.email=email;
         this.password=password;
     }
-
- */
 
 
 

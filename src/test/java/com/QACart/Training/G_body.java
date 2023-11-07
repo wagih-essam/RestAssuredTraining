@@ -75,6 +75,7 @@ public class G_body {
     Serialization is to convert java object to JSON
     */
 
+    /*
     @Test
     public void ShouldBeAbleToLoginBySetters(){
         loginpojo body = new loginpojo();
@@ -90,11 +91,14 @@ public class G_body {
                 .then().log().all().assertThat().statusCode(200);
     }
 
+    */
+
+
     /*
 
     * Or , we can make it by contractor
     * add pulic loginpojo in loginpojo and then apply the belew
-    *
+    */
 
     @Test
     public void ShouldBeAbleToLoginByContractor(){
@@ -109,7 +113,23 @@ public class G_body {
                 .then().log().all().assertThat().statusCode(200);
     }
 
-    *
-     */
+
+
+    @Test
+    public void ShouldBeAbleToLoginByURLencoded(){
+        loginpojo bodyy = new loginpojo("hatem@example.com","Test1234");
+        HashMap<String,String> formParam = new HashMap<>();
+        formParam.put("Foo","123");
+
+        given()
+                .baseUri("https://todo.qacart.com")
+                .contentType(ContentType.URLENC)
+                .formParams(formParam)
+                .log().all()
+                .when().post("api/v1/students/login")
+                .then().log().all().assertThat().statusCode(200);
+    }
+
+
 
 }
