@@ -21,6 +21,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
